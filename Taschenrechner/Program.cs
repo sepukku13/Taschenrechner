@@ -20,7 +20,7 @@ namespace Taschenrechner_Iteration_1
             int ersterSummandAlsZahl = Convert.ToInt32(ersterSummand);
             int zweiterSummandAlsZahl = Convert.ToInt32(zweiterSummand);
 
-            // Berechnung
+            // Berechnung6
             int summe = ersterSummandAlsZahl + zweiterSummandAlsZahl;
 
             //Ausgabe
