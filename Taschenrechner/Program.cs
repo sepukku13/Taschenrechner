@@ -17,11 +17,11 @@ namespace Taschenrechner_Iteration_1
             
 
             // Wandel Text in Ganzzahlen
-            int ersterSummandAlsZahl = Convert.ToInt32(ersterSummand);
-            int zweiterSummandAlsZahl = Convert.ToInt32(zweiterSummand);
+            double ersterSummandAlsZahl = Convert.ToDouble(ersterSummand);
+            double zweiterSummandAlsZahl = Convert.ToDouble(zweiterSummand);
 
             // Berechnung
-            int summe = ersterSummandAlsZahl + zweiterSummandAlsZahl;
+            double summe = ersterSummandAlsZahl + zweiterSummandAlsZahl;
 
             //Ausgabe
             Console.WriteLine("Summe: {0}", summe);
