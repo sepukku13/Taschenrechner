@@ -23,21 +23,27 @@ namespace Taschenrechner_Iteration_1
             double zweiteZahl = Convert.ToDouble(zweiterWert);
 
             // Berechnung
-            if (operation == "+")
+            switch (operation)
             {
-                resultat = Addiere(ersteZahl, zweiteZahl);
-                Console.WriteLine("Ergebnis: {0}", resultat);
+                case "+":
+                    resultat = Addiere(ersteZahl, zweiteZahl);
+                    Console.WriteLine("Ergebnis: {0}", resultat);
+                    HoleBenutzerEingabe("Mit Return beenden!");
+                    break;
+                case "-":
+                    resultat = Subtrahiere(ersteZahl, zweiteZahl);
+                    Console.WriteLine("Ergebnis: {0}", resultat);
+                    HoleBenutzerEingabe("Mit Return beenden!");
+                    break;
+                case "*":
+                case "/":
+                    Console.WriteLine("NOCH NICHT IMPLEMENTIERT");
+                    break;
+                default:
+                    Console.WriteLine("Ungültige Eingabe!");
+                    HoleBenutzerEingabe("Mit Return beenden!");
+                    break;
             }
-            else if (operation == "-")
-            {
-                resultat = Subtrahiere(ersteZahl, zweiteZahl);
-                Console.WriteLine("Ergebnis: {0}", resultat);
-            }
-            else
-            {
-                Console.WriteLine("Ungültige Eingabe!");
-            }
-            HoleBenutzerEingabe("Drücke Return zum Beenden der Anwendung!");
         }
         static string HoleBenutzerEingabe (string eingabetext)
         {
