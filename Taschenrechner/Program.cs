@@ -11,11 +11,12 @@ namespace Taschenrechner_Iteration_1
         static void Main(string[] args)
         {
             double resultat = 0;
+           
             
             // User Story "Addieren". Als Benutzer möchte ich 2 Zahlen eingeben und addieren.
             string ersterWert = HoleBenutzerEingabe ("Bitte erste Zahl eigeben: ");
             string zweiterWert = HoleBenutzerEingabe("Bitte zweite Zahl eigeben: ");
-            string operation = HoleBenutzerEingabe("Bitte Operator eingeben (+ / -): ");
+            string operation = HoleBenutzerEingabe("Bitte Operator eingeben (+ oder - oder * oder /: ");
 
             // Wandel Text in Ganzzahlen
             // TODO: Auslagern in eine Methode
@@ -23,6 +24,7 @@ namespace Taschenrechner_Iteration_1
             double zweiteZahl = Convert.ToDouble(zweiterWert);
 
             // Berechnung
+           
             switch (operation)
             {
                 case "+":
@@ -36,8 +38,14 @@ namespace Taschenrechner_Iteration_1
                     HoleBenutzerEingabe("Mit Return beenden!");
                     break;
                 case "*":
+                    resultat = Multiplikation(ersteZahl, zweiteZahl);
+                    Console.WriteLine("Ergebnis: {0}", resultat);
+                    HoleBenutzerEingabe("Mit Return beenden!");
+                    break;
                 case "/":
-                    Console.WriteLine("NOCH NICHT IMPLEMENTIERT");
+                    resultat = Division(ersteZahl, zweiteZahl);
+                    Console.WriteLine("Ergebnis: {0}", resultat);
+                    HoleBenutzerEingabe("Mit Return beenden!");
                     break;
                 default:
                     Console.WriteLine("Ungültige Eingabe!");
@@ -60,6 +68,16 @@ namespace Taschenrechner_Iteration_1
         {
             double differenz = minuend - subtrahend;
             return differenz;
+        }
+        static double Multiplikation (double faktor1, double faktor2)
+        {
+            double produkt = faktor1 * faktor2;
+            return produkt;
+        }
+        static double Division (double dividend, double divisor)
+        {
+            double quotient = dividend / divisor;
+            return quotient;
         }
     }
 }
