@@ -10,54 +10,65 @@ namespace Taschenrechner_Iteration_1
     { 
         static void Main(string[] args)
         {
-            double resultat = 0;
-           
-            
-            // User Story "Addieren". Als Benutzer möchte ich 2 Zahlen eingeben und addieren.
-            string ersterWert = HoleBenutzerEingabe ("Bitte erste Zahl eigeben: ");
-            string zweiterWert = HoleBenutzerEingabe("Bitte zweite Zahl eigeben: ");
-            string operation = HoleBenutzerEingabe("Bitte Operator eingeben (+ oder - oder * oder /: ");
-
-            // Wandel Text in Ganzzahlen
-            // TODO: Auslagern in eine Methode
-            double ersteZahl = Convert.ToDouble(ersterWert);
-            double zweiteZahl = Convert.ToDouble(zweiterWert);
-
-            // Berechnung
-           
-            switch (operation)
+            char antwort;
+            do
             {
-                case "+":
-                    resultat = Addiere(ersteZahl, zweiteZahl);
-                    Console.WriteLine("Ergebnis: {0}", resultat);
-                    HoleBenutzerEingabe("Mit Return beenden!");
-                    break;
-                case "-":
-                    resultat = Subtrahiere(ersteZahl, zweiteZahl);
-                    Console.WriteLine("Ergebnis: {0}", resultat);
-                    HoleBenutzerEingabe("Mit Return beenden!");
-                    break;
-                case "*":
-                    resultat = Multiplikation(ersteZahl, zweiteZahl);
-                    Console.WriteLine("Ergebnis: {0}", resultat);
-                    HoleBenutzerEingabe("Mit Return beenden!");
-                    break;
-                case "/":
-                    resultat = Division(ersteZahl, zweiteZahl);
-                    Console.WriteLine("Ergebnis: {0}", resultat);
-                    HoleBenutzerEingabe("Mit Return beenden!");
-                    break;
-                default:
-                    Console.WriteLine("Ungültige Eingabe!");
-                    HoleBenutzerEingabe("Mit Return beenden!");
-                    break;
+                // User Story "Addieren". Als Benutzer möchte ich 2 Zahlen eingeben und addieren.
+                string ersterWert = HoleBenutzerEingabe("Bitte erste Zahl eigeben: ");
+                string zweiterWert = HoleBenutzerEingabe("Bitte zweite Zahl eigeben: ");
+                string operation = HoleBenutzerEingabe("Bitte Operator eingeben (+ oder - oder * oder /: ");
+
+                // Wandel Text in Ganzzahlen
+                // TODO: Auslagern in eine Methode
+                double ersteZahl = Convert.ToDouble(ersterWert);
+                double zweiteZahl = Convert.ToDouble(zweiterWert);
+
+                // Berechnung
+                double resultat = Berechnung(ersteZahl, zweiteZahl, operation);
+
+                // Ausgabe
+                 antwort = Ausgabe(resultat);
             }
+            while ((antwort == 'j') || (antwort== 'J'));
         }
         static string HoleBenutzerEingabe (string eingabetext)
         {
             Console.Write(eingabetext);
             string summand = Console.ReadLine();
             return summand;
+        }
+
+        static double Berechnung (double ersteZahl, double zweiteZahl, string operation)
+        {
+            double resultat = 0;
+            // Berechnung
+            switch (operation)
+            {
+                case "+":
+                    resultat = Addiere(ersteZahl, zweiteZahl);
+                    break;
+                case "-":
+                    resultat = Subtrahiere(ersteZahl, zweiteZahl);
+                    break;
+                case "*":
+                    resultat = Multiplikation(ersteZahl, zweiteZahl);
+                    break;
+                case "/":
+                    resultat = Division(ersteZahl, zweiteZahl);
+                    break;
+                default:
+                    Console.WriteLine("Ungültige Eingabe!");
+                    break;
+            }
+            return resultat;
+        }
+        static char Ausgabe (double resultat)
+        {
+            Console.WriteLine("Ergebnis: {0}", resultat);
+            Console.WriteLine("Nochmal J/N?");
+            char antwort = Convert.ToChar(Console.ReadLine());
+            Console.Clear();
+            return antwort;
         }
         static double Addiere(double ersterSummandAlsZahl, double zweiterSummandAlsZahl)
         {
