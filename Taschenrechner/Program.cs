@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Taschenrechner_Iteration_1
+namespace Taschenrechner
 {
     class Program
     { 
@@ -24,7 +24,8 @@ namespace Taschenrechner_Iteration_1
                 double zweiteZahl = Convert.ToDouble(zweiterWert);
 
                 // Berechnung
-                double resultat = Berechnung(ersteZahl, zweiteZahl, operation);
+                RechnerModel model = new RechnerModel();
+                double resultat = model.Berechne(ersteZahl, zweiteZahl, operation);
 
                 // Ausgabe
                  antwort = Ausgabe(resultat);
@@ -37,31 +38,7 @@ namespace Taschenrechner_Iteration_1
             string summand = Console.ReadLine();
             return summand;
         }
-
-        static double Berechnung (double ersteZahl, double zweiteZahl, string operation)
-        {
-            double resultat = 0;
-            // Berechnung
-            switch (operation)
-            {
-                case "+":
-                    resultat = Addiere(ersteZahl, zweiteZahl);
-                    break;
-                case "-":
-                    resultat = Subtrahiere(ersteZahl, zweiteZahl);
-                    break;
-                case "*":
-                    resultat = Multiplikation(ersteZahl, zweiteZahl);
-                    break;
-                case "/":
-                    resultat = Division(ersteZahl, zweiteZahl);
-                    break;
-                default:
-                    Console.WriteLine("Ungültige Eingabe!");
-                    break;
-            }
-            return resultat;
-        }
+                
         static char Ausgabe (double resultat)
         {
             Console.WriteLine("Ergebnis: {0}", resultat);
@@ -70,25 +47,6 @@ namespace Taschenrechner_Iteration_1
             Console.Clear();
             return antwort;
         }
-        static double Addiere(double ersterSummandAlsZahl, double zweiterSummandAlsZahl)
-        {
-            double summe = ersterSummandAlsZahl + zweiterSummandAlsZahl;
-            return summe;
-        }
-        static double Subtrahiere(double minuend, double subtrahend)
-        {
-            double differenz = minuend - subtrahend;
-            return differenz;
-        }
-        static double Multiplikation (double faktor1, double faktor2)
-        {
-            double produkt = faktor1 * faktor2;
-            return produkt;
-        }
-        static double Division (double dividend, double divisor)
-        {
-            double quotient = dividend / divisor;
-            return quotient;
-        }
+        
     }
 }
