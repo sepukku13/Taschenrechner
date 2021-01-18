@@ -8,29 +8,37 @@ namespace Taschenrechner
 {
     class RechnerModel
     {
-        public double Berechne (double ersteZahl, double zweiteZahl, string operation)
+        public double Resultat { get; private set; }
+
+        // Konstruktor
+        // Konstruktor muss selben Namen wie Klasse haben
+        // Wird meist dazu verwendet um Variablen zu initialisieren -> Resultat
+        public RechnerModel ()
         {
-            double resultat = 0;
+            Resultat = 0;
+        }
+        
+        public void Berechne (double ersteZahl, double zweiteZahl, string operation)
+        {
             // Berechnung
             switch (operation)
             {
                 case "+":
-                    resultat = Addiere(ersteZahl, zweiteZahl);
+                    Resultat = Addiere(ersteZahl, zweiteZahl);
                     break;
                 case "-":
-                    resultat = Subtrahiere(ersteZahl, zweiteZahl);
+                    Resultat = Subtrahiere(ersteZahl, zweiteZahl);
                     break;
                 case "*":
-                    resultat = Multiplikation(ersteZahl, zweiteZahl);
+                    Resultat = Multiplikation(ersteZahl, zweiteZahl);
                     break;
                 case "/":
-                    resultat = Division(ersteZahl, zweiteZahl);
+                    Resultat = Division(ersteZahl, zweiteZahl);
                     break;
                 default:
                     Console.WriteLine("Ungültige Eingabe!");
                     break;
             }
-            return resultat;
         }
         private double Addiere(double ersterSummandAlsZahl, double zweiterSummandAlsZahl)
         {

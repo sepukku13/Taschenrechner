@@ -25,10 +25,10 @@ namespace Taschenrechner
 
                 // Berechnung
                 RechnerModel model = new RechnerModel();
-                double resultat = model.Berechne(ersteZahl, zweiteZahl, operation);
+                model.Berechne(ersteZahl, zweiteZahl, operation);
 
                 // Ausgabe
-                 antwort = Ausgabe(resultat);
+                 antwort = Ausgabe(model.Resultat);
             }
             while ((antwort == 'j') || (antwort== 'J'));
         }
