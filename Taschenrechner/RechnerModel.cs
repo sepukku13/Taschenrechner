@@ -17,7 +17,6 @@ namespace Taschenrechner
         {
             Resultat = 0;
         }
-        
         public void Berechne (double ersteZahl, double zweiteZahl, string operation)
         {
             // Berechnung
@@ -55,15 +54,10 @@ namespace Taschenrechner
             double produkt = faktor1 * faktor2;
             return produkt;
         }
-        private double Division(double dividend, double divisor)
+        static double Division(double dividend, double divisor)
         {
             double quotient = dividend / divisor;
             return quotient;
         }
-
-
-
-
     }
-
 }
