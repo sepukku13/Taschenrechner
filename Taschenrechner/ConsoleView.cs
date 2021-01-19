@@ -8,15 +8,26 @@ namespace Taschenrechner
 {
     class ConsoleView
     {
-        public string HoleBenutzerEingabe(string eingabetext)
+        private RechnerModel model;
+
+        //Konstruktor
+        public ConsoleView (RechnerModel model1)
         {
-            Console.Write(eingabetext);
-            string summand = Console.ReadLine();
-            return summand;
+            model = model1;
         }
-        public char Ausgabe(double resultat)
+        public string HoleZahlVomBenutzer()
         {
-            Console.WriteLine("Ergebnis: {0}", resultat);
+            Console.Write("Bitte Zahl eingeben: ");
+            return Console.ReadLine();
+        }
+        public string HoleOperatorVomBenutzer()
+        {
+            Console.Write("Bitte Operator eingeben (+ oder - oder * oder /: ");
+            return Console.ReadLine();
+        }
+        public char WarteAufEndeDurchBenutzer()
+        {
+            Console.WriteLine("Ergebnis: {0}", model.Resultat);
             Console.WriteLine("Nochmal J/N?");
             char antwort = Convert.ToChar(Console.ReadLine());
             Console.Clear();

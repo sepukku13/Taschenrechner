@@ -13,11 +13,12 @@ namespace Taschenrechner
             char antwort;
             do
             {
-                // User Story "Addieren". Als Benutzer möchte ich 2 Zahlen eingeben und addieren.
-                ConsoleView view = new ConsoleView();
-                string ersterWert = view.HoleBenutzerEingabe("Bitte erste Zahl eigeben: ");
-                string zweiterWert = view.HoleBenutzerEingabe("Bitte zweite Zahl eigeben: ");
-                string operation = view.HoleBenutzerEingabe("Bitte Operator eingeben (+ oder - oder * oder /: ");
+                RechnerModel model = new RechnerModel();
+                ConsoleView view = new ConsoleView(model);
+                string ersterWert = view.HoleZahlVomBenutzer();
+                string operation = view.HoleOperatorVomBenutzer();
+                string zweiterWert = view.HoleZahlVomBenutzer();
+
 
                 // Wandel Text in Ganzzahlen
                 // TODO: Auslagern in eine Methode
@@ -25,11 +26,11 @@ namespace Taschenrechner
                 double zweiteZahl = Convert.ToDouble(zweiterWert);
 
                 // Berechnung
-                RechnerModel model = new RechnerModel();
-                model.Berechne(ersteZahl, zweiteZahl, operation);
                 
+                model.Berechne(ersteZahl, zweiteZahl, operation);
+
                 // Ausgabe
-                 antwort = view.Ausgabe(model.Resultat);
+                antwort = view.WarteAufEndeDurchBenutzer();
             }
             while ((antwort == 'j') || (antwort== 'J'));
         }
