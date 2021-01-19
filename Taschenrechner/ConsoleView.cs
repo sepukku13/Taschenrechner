@@ -32,6 +32,7 @@ namespace Taschenrechner
             char antwort = Convert.ToChar(Console.ReadLine());
             Console.Clear();
             return antwort;
+
         }
     }
 }
