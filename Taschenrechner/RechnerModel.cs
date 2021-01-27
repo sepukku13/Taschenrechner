@@ -9,6 +9,7 @@ namespace Taschenrechner
     class RechnerModel
     {
         public double Resultat { get; private set; }
+        public string Operation { get; private set; }
 
         // Konstruktor
         // Konstruktor muss selben Namen wie Klasse haben
@@ -16,9 +17,11 @@ namespace Taschenrechner
         public RechnerModel ()
         {
             Resultat = 0;
+            Operation = "unbekannt";
         }
         public void Berechne (double ersteZahl, double zweiteZahl, string operation)
         {
+            this.Operation = operation;
             // Berechnung
             switch (operation)
             {
