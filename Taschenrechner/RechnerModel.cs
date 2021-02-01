@@ -9,7 +9,9 @@ namespace Taschenrechner
     class RechnerModel
     {
         public double Resultat { get; private set; }
-        public string Operation { get; private set; }
+        public string Operation { get; set; }
+        public double ErsteZahl { get; set; }
+        public double ZweiteZahl { get; set; }
 
         // Konstruktor
         // Konstruktor muss selben Namen wie Klasse haben
@@ -19,23 +21,22 @@ namespace Taschenrechner
             Resultat = 0;
             Operation = "unbekannt";
         }
-        public void Berechne (double ersteZahl, double zweiteZahl, string operation)
+        public void Berechne ()
         {
-            this.Operation = operation;
             // Berechnung
-            switch (operation)
+            switch (Operation)
             {
                 case "+":
-                    Resultat = Addiere(ersteZahl, zweiteZahl);
+                    Resultat = Addiere(ErsteZahl, ZweiteZahl);
                     break;
                 case "-":
-                    Resultat = Subtrahiere(ersteZahl, zweiteZahl);
+                    Resultat = Subtrahiere(ErsteZahl, ZweiteZahl);
                     break;
                 case "*":
-                    Resultat = Multiplikation(ersteZahl, zweiteZahl);
+                    Resultat = Multiplikation(ErsteZahl, ZweiteZahl);
                     break;
                 case "/":
-                    Resultat = Division(ersteZahl, zweiteZahl);
+                    Resultat = Division(ErsteZahl, ZweiteZahl);
                     break;
                 default:
                     Console.WriteLine("Ungültige Eingabe!");

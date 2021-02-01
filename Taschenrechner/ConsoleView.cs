@@ -15,6 +15,12 @@ namespace Taschenrechner
         {
             model = model1;
         }
+        public void HoleEingabeVomBenutzer()
+        {
+            model.ErsteZahl = HoleZahlVomBenutzer();
+            model.Operation = HoleOperatorVomBenutzer();
+            model.ZweiteZahl = HoleZahlVomBenutzer();
+        }
         public double HoleZahlVomBenutzer()
         {
             string zahl;
