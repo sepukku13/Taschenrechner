@@ -1,25 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Taschenrechner
 {
     class ConsoleView
     {
         private RechnerModel model;
+        public bool BenutzerWillBeenden { get; private set; }
 
         //Konstruktor
-        public ConsoleView (RechnerModel model1)
+        public ConsoleView(RechnerModel model1)
         {
             model = model1;
+            BenutzerWillBeenden = false;
         }
-        public void HoleEingabeVomBenutzer()
+        public void HoleEingabeFuerErsteBerechnungVomBenutzer()
         {
             model.ErsteZahl = HoleZahlVomBenutzer();
             model.Operation = HoleOperatorVomBenutzer();
             model.ZweiteZahl = HoleZahlVomBenutzer();
+        }
+        public void HoleEingabenFuerFortlaufendeBerechnung()
+        {
+            string eingabe = HoleNaechsteAktionVomBenutzer();
+            if (eingabe == "fertig")
+            {
+                BenutzerWillBeenden = true;
+            }
+            else
+            {
+                HoleEingabeFuerErsteBerechnungVomBenutzer();
+            }
+        }
+        private string HoleNaechsteAktionVomBenutzer()
+        {
+            Console.Write("Eingabe 'fertig' zum Beenden: ");
+            return Console.ReadLine();
         }
         public double HoleZahlVomBenutzer()
         {
@@ -33,7 +48,7 @@ namespace Taschenrechner
             Console.Write("Bitte Operator (+ oder - oder * oder /) eingeben: ");
             return Console.ReadLine();
         }
-        public void GibResultatAus ()
+        public void GibResultatAus()
         {
             switch (model.Operation)
             {
@@ -53,11 +68,6 @@ namespace Taschenrechner
                     Console.WriteLine("Du hast eine ungültige Auswahl der Operation getroffen.");
                     break;
             }
-        }
-        public void WarteAufEndeDurchBenutzer()
-        {
-            Console.WriteLine("Enter zum Beenden!");
-            Console.ReadLine();
         }
     }
 }

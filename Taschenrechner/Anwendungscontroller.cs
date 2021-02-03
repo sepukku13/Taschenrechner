@@ -18,14 +18,19 @@ namespace Taschenrechner
         // öffentliche Methode
         public void Ausfuehren()
         {
-            view.HoleEingabeVomBenutzer();
-
+            view.HoleEingabeFuerErsteBerechnungVomBenutzer();
             // Berechnung
             model.Berechne();
-
             // Ausgabe
             view.GibResultatAus();
-            view.WarteAufEndeDurchBenutzer();
+            view.HoleEingabenFuerFortlaufendeBerechnung();
+
+            while (!view.BenutzerWillBeenden)
+            {
+                model.Berechne();
+                view.GibResultatAus();
+                view.HoleEingabenFuerFortlaufendeBerechnung();
+            }
         }
     }
 }
