@@ -38,10 +38,18 @@ namespace Taschenrechner
         }
         public double HoleZahlVomBenutzer()
         {
-            string zahl;
+            double zahl;
+            string eingabe;
             Console.Write("Bitte Zahl eingeben: ");
-            zahl = Console.ReadLine();
-            return Convert.ToDouble(zahl);
+            eingabe = Console.ReadLine();
+            // TryParse gibt true zurück, wenn erfolgreich konvertiert, daher negieren mit !
+            while (!Double.TryParse (eingabe, out zahl))
+            {
+                Console.WriteLine("Falsche Eingabe. Bitte nochmal!");
+                Console.Write("Bitte Zahl eingeben: ");
+                eingabe = Console.ReadLine();
+            }
+            return zahl;
         }
         public string HoleOperatorVomBenutzer()
         {
