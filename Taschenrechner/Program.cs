@@ -8,7 +8,7 @@ namespace Taschenrechner
 {
     class Program
     { 
-        static void Main(string[] args)
+        static void Main()
         {
             RechnerModel model = new RechnerModel();
             ConsoleView view = new ConsoleView(model);

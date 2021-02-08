@@ -4,7 +4,7 @@ namespace Taschenrechner
 {
     class ConsoleView
     {
-        private RechnerModel model;
+        private readonly RechnerModel model;
         public bool BenutzerWillBeenden { get; private set; }
 
         //Konstruktor

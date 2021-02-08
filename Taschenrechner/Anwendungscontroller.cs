@@ -5,8 +5,8 @@ namespace Taschenrechner
     class Anwendungscontroller
     {
         //2 Attribute von Typen ConsoleView und RechnerModel
-        private ConsoleView view;
-        private RechnerModel model;
+        private readonly ConsoleView view;
+        private readonly RechnerModel model;
 
         // Konstruktor
         public Anwendungscontroller (ConsoleView view, RechnerModel model)
