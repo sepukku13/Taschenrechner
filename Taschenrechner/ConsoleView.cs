@@ -22,7 +22,7 @@ namespace Taschenrechner
         public void HoleEingabenFuerFortlaufendeBerechnung()
         {
             string eingabe = HoleNaechsteAktionVomBenutzer();
-            if (eingabe == "fertig")
+            if (eingabe.ToLower() == "fertig")
             {
                 BenutzerWillBeenden = true;
             }
